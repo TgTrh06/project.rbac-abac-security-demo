@@ -86,7 +86,7 @@ npm install
 # tạo file .env (copy .env.example nếu có)
 # ví dụ .env:
 # PORT=5001
-# MONGO_URI=mongodb://127.0.0.1:27017/security_rbac_abac_secure
+# MONGO_URI=mongodb://127.0.0.1:27017/rbac
 # JWT_SECRET=your_secure_secret
 
 cp .env.example .env || echo "Create .env manually"
@@ -125,19 +125,19 @@ npm run seed
 
 ### Xuất (mongodump)
 ```bash
-mongodump --db=security_rbac_abac_secure --out=./mongodump-export
+mongodump --db=rbac --out=./mongodump-export
 zip -r MaSV_TenDeTai_mongodump.zip mongodump-export
 ```
 
 ### Nhập lại (mongorestore)
 ```bash
-mongorestore --db=security_rbac_abac_secure ./mongodump-export/security_rbac_abac_secure
+mongorestore --db=rbac ./mongodump-export/security_rbac_abac_secure
 ```
 
 ### Nếu không có mongodump (mongoexport)
 ```bash
-mongoexport --db=security_rbac_abac_secure --collection=users --out=users.json --jsonArray
-mongoimport --db=security_rbac_abac_secure --collection=users --file=users.json --jsonArray
+mongoexport --db=rbac --collection=users --out=users.json --jsonArray
+mongoimport --db=rbac --collection=users --file=users.json --jsonArray
 ```
 
 ---
@@ -148,14 +148,14 @@ Tạo file `.env` trong mỗi backend (không commit .env):
 **backend_secure/.env**
 ```
 PORT=5001
-MONGO_URI=mongodb://127.0.0.1:27017/security_rbac_abac_secure
+MONGO_URI=mongodb://127.0.0.1:27017/rbac
 JWT_SECRET=change_this_to_a_strong_secret
 ```
 
 **backend_vulnerable/.env**
 ```
 PORT=4000
-MONGO_URI=mongodb://127.0.0.1:27017/security_rbac_abac_vulnerable
+MONGO_URI=mongodb://127.0.0.1:27017/rbac
 JWT_SECRET=weaksecret
 ```
 
