@@ -17,7 +17,7 @@ Frontend cung cấp 2 tab để so sánh hành vi giữa hai backend.
 ## 2. Công nghệ sử dụng
 
 **Backend**
-- Node.js (ESM / `type: "module"`)
+- Node.js
 - Express.js
 - MongoDB (Mongoose)
 - jsonwebtoken, bcryptjs, dotenv, cors
@@ -34,6 +34,7 @@ Frontend cung cấp 2 tab để so sánh hành vi giữa hai backend.
 ```
 security-rbac-abac/
 ├─ backend_secure/            # Backend an toàn (RBAC + ABAC)
+│  ├─ export/                 # Export data from database
 │  ├─ models/                 # Mongoose model (User...)
 │  ├─ middlewares/            # auth.js, rbac.js, abac.js (secure)
 │  ├─ routes/                 # resource routes (protected)
