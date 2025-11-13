@@ -34,11 +34,12 @@ Frontend cung cấp 2 tab để so sánh hành vi giữa hai backend.
 ```
 security-rbac-abac/
 ├─ backend_secure/            # Backend an toàn (RBAC + ABAC)
-│  ├─ export/                 # Export data from database
+│  ├─ export/                 # Export data from database (MONGO_DUMP)
 │  ├─ models/                 # Mongoose model (User...)
 │  ├─ middlewares/            # auth.js, rbac.js, abac.js (secure)
 │  ├─ routes/                 # resource routes (protected)
 │  ├─ seed/                   # seedUsers.js
+│  ├─ dump.js                 # Xuất data vào export/
 │  ├─ server.js
 │  └─ package.json
 │
@@ -49,15 +50,19 @@ security-rbac-abac/
 │  └─ package.json
 │
 ├─ frontend/                  # React + Vite frontend (2 tabs)
-│  ├─ src/
+│  ├─ src/                 
+│  │    ├─ api/
+│  │    ├─ components/
+│  │    ├─ pages/
+│  │    ├─ App.jsx
+│  │    └─ package.json
+│  │
 │  ├─ index.html
 │  └─ package.json
 │
-├─ docs/
-│  └─ PoC.md
-├─ db/
-│  └─ sample_users.json
-├─ mongodump-export/          # (khi bạn chạy mongodump)
+├─ docs/                      
+│  └─ screenshots/            # Screenshots Demo
+│  
 ├─ .gitignore
 └─ README.md
 ```
@@ -67,7 +72,7 @@ security-rbac-abac/
 ## 4. Yêu cầu môi trường
 - Node.js >= 16 (khuyến nghị Node 18+)
 - npm >= 8
-- MongoDB (local hoặc Atlas)
+- MongoDB (Trong demo này sử dụng Atlas)
 - (Nếu dùng Tailwind) postcss, autoprefixer
 
 ---
@@ -77,14 +82,14 @@ security-rbac-abac/
 ### 5.1. Clone và chuẩn bị
 ```bash
 git clone <your-repo-url>
-cd security-rbac-abac
+cd rbac-abac-security-demo
 ```
 
 ### 5.2. Backend secure (port 5001)
 ```bash
 cd backend_secure
 npm install
-# tạo file .env (copy .env.example nếu có)
+# tạo file .env
 # ví dụ .env:
 # PORT=5001
 # MONGO_URI=mongodb://127.0.0.1:27017/rbac
@@ -124,23 +129,10 @@ cd backend_secure
 npm run seed
 ```
 
-### Xuất (mongodump)
+### Xuất (mongodump) collection users
 ```bash
-mongodump --db=rbac --out=./mongodump-export
-zip -r MaSV_TenDeTai_mongodump.zip mongodump-export
+node ./backend_secure/dump.js
 ```
-
-### Nhập lại (mongorestore)
-```bash
-mongorestore --db=rbac ./mongodump-export/security_rbac_abac_secure
-```
-
-### Nếu không có mongodump (mongoexport)
-```bash
-mongoexport --db=rbac --collection=users --out=users.json --jsonArray
-mongoimport --db=rbac --collection=users --file=users.json --jsonArray
-```
-
 ---
 
 ## 7. Cấu hình file kết nối DB (`.env`)
@@ -162,10 +154,10 @@ JWT_SECRET=weaksecret
 
 ---
 
-## 8. Lệnh chạy hệ thống (tóm tắt)
-- Cài dependencies: `npm install`
-- Seed dữ liệu: `npm run seed`
-- Chạy backend secure: `npm start` (trong backend_secure)
+## 8. Lệnh chạy hệ thống
+- Cài dependencies: `npm install` (trong backend_secure, backend_vulnerable, frontend)
+- Seed dữ liệu: `npm run seed` (trong backend_secure hoặc backend_vulnerable)
+- Chạy backend secure: `npm run start` (trong backend_secure)
 - Chạy backend vulnerable: `node server.js` (trong backend_vulnerable)
 - Chạy frontend: `npm run dev` (trong frontend)
 
@@ -181,44 +173,11 @@ JWT_SECRET=weaksecret
 ---
 
 ## 10. Kết quả & ảnh minh họa (hướng dẫn)
-Bạn cần chụp **3–5 ảnh** và lưu vào `docs/screenshots/` (tạo folder nếu cần). Những ảnh nên bao gồm:
+Những ảnh bao gồm:
 
 1. `login_admin_secure.png` — màn hình login (secure) và token nhận được.
 2. `access_admin_secure_ok.png` — kết quả truy cập endpoint admin (200 OK).
 3. `access_department_secure_forbidden.png` — user không có department bị trả 403.
 4. `vulnerable_login_admin_fake.png` — dùng vulnerable login (chọn role=admin) nhận token admin.
-5. `vulnerable_delete_success.png` — gọi DELETE trên vulnerable backend với token giả → thành công.
-
-Ví dụ chèn ảnh vào README:
-```md
-![Login admin secure](docs/screenshots/login_admin_secure.png)
-```
-
----
-
-## 11. Ghi chú bảo mật & khuyến nghị
-- **Không tin role trong token**: token chỉ nên chứa `sub`/`id`; server phải load user từ DB để quyết định quyền.
-- Sử dụng **short-lived JWT** + refresh tokens.
-- Lưu logs cho hành động nhạy cảm (audit).
-- Quản lý secret (JWT_SECRET) bằng Secret Manager trong production.
-- Áp dụng ABAC để kiểm tra owner/department khi cần.
-
----
-
-## 12. .gitignore (gợi ý)
-```
-node_modules/
-.env
-npm-debug.log
-mongodump-export/
-docs/screenshots/*
-```
-
----
-
-## 13. Ghi chú nộp bài
-- Nộp **Link Git** public (không include node_modules, .env).
-- Nộp **mongodump-export** folder (nén zip) hoặc `users.json` nếu dùng mongoexport.
-- Nộp `README.md` (file này) và ảnh minh họa trong `docs/screenshots/`.
 
 ---
