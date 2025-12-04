@@ -1,263 +1,343 @@
-# 🎭 Attack Simulation - Setup Complete! ✅
+# 📚 Attack Simulation - Documentation Index
 
-## ✨ Đã tạo thành công
-
-Tôi đã tạo một **Attack Simulation Tool** hoàn chỉnh để demo kịch bản tấn công vào hệ thống RBAC/ABAC của bạn!
+Chào mừng đến với Attack Simulation Tool! Đây là danh mục tất cả tài liệu và hướng dẫn.
 
 ---
 
-## 📦 Files đã tạo
+## 🚀 Quick Start
 
-### 🎯 Attack Simulation Tool
-```
-attack-simulation/
-├── attacker.js              ✅ Main attack script (colorful CLI)
-├── generate-report.js       ✅ JSON report generator
-├── seed-attacker.js         ✅ Seed attacker user to DB
-├── package.json             ✅ Dependencies config
-├── .env.example             ✅ Configuration example
-├── .gitignore              ✅ Git ignore rules
-└── README.md               ✅ Technical documentation
+**Mới bắt đầu? Đọc [SETUP_GUIDE.md](./SETUP_GUIDE.md) 🏠**
+
+**Bắt đầu nhanh nhất:**
+```bash
+.\quick-test.ps1
 ```
 
-### 📚 Documentation
-```
-├── INDEX.md                 ✅ Navigation hub (START HERE!)
-├── DEMO_GUIDE.md            ✅ Step-by-step demo guide
-├── ATTACK_SUMMARY.md        ✅ Comprehensive summary
-├── COMPARISON.md            ✅ Vulnerable vs Secure comparison
-└── ATTACK_SIMULATION.md     ✅ Quick reference
-```
-
-### 🔧 Scripts
-```
-├── run-attack-demo.ps1      ✅ Automated full demo
-└── quick-test.ps1           ✅ Quick test with checks
-```
+**Hoặc xem:** [DEMO_GUIDE.md](./DEMO_GUIDE.md)
 
 ---
 
-## 🚀 Cách sử dụng (3 bước đơn giản)
+## 📖 Tài liệu chính
 
-### Bước 1: Setup (chỉ 1 lần)
-```bash
-cd attack-simulation
-npm install
-npm run seed
-```
+### 0. [SETUP_GUIDE.md](./SETUP_GUIDE.md) 🏠 **START HERE**
+**Tài liệu chính của project - Tổng quan Attack Simulation**
+- Setup hoàn chỉnh trong 3 bước
+- Kết quả mong đợi
+- Kịch bản tấn công
+- Attack targets
+- Commands cheat sheet
+- Demo flow (12 phút)
 
-### Bước 2: Start backends (2 terminals)
-```bash
-# Terminal 1
-cd backend_vulnerable
-npm start  # Port 5001
+**Dành cho:** Mọi người - Điểm khởi đầu tốt nhất!
 
-# Terminal 2
-cd backend_secure
-npm start  # Port 5002
-```
+---
 
-### Bước 3: Run attack
-```bash
-# Terminal 3
-cd attack-simulation
-npm run attack
-```
+### 1. [DEMO_GUIDE.md](./DEMO_GUIDE.md) ⭐ **RECOMMENDED**
+**Hướng dẫn demo chi tiết từng bước**
+- Cách chạy demo (3 options)
+- Kết quả mong đợi
+- Phân tích chi tiết
+- Điểm nhấn khi present
+- **Thời lượng:** ~12 phút
 
-**HOẶC chạy tự động:**
+**Dành cho:** Người muốn demo hoặc present
+
+---
+
+### 2. [ATTACK_SUMMARY.md](./ATTACK_SUMMARY.md)
+**Tổng quan toàn diện về attack simulation**
+- Mục đích và kịch bản
+- Kết quả tổng hợp
+- Bài học rút ra
+- Best practices
+- Attack vectors demonstrated
+- Metrics và đánh giá
+
+**Dành cho:** Người muốn hiểu tổng quan
+
+---
+
+### 3. [COMPARISON.md](./COMPARISON.md)
+**So sánh chi tiết Vulnerable vs Secure**
+- Bảng so sánh từng resource
+- Protection mechanisms
+- Code comparison
+- Audit log comparison
+- Security metrics
+- Real-world impact
+
+**Dành cho:** Người muốn phân tích kỹ thuật
+
+---
+
+### 4. [attack-simulation/SETUP_GUIDE.md](./attack-simulation/SETUP_GUIDE.md)
+**Tài liệu kỹ thuật của Attack Simulation Tool**
+- Attacker profile
+- Cách cài đặt và sử dụng
+- Attack targets
+- Chi tiết kỹ thuật
+- Mở rộng
+
+**Dành cho:** Developer
+
+---
+
+### 5. [ATTACK_SIMULATION.md](./ATTACK_SIMULATION.md)
+**Quick reference cho attack simulation**
+- Giới thiệu ngắn gọn
+- Quick start
+- Kết quả mong đợi
+- Link đến tài liệu chi tiết
+
+**Dành cho:** Quick reference
+
+---
+
+## 🛠️ Scripts
+
+### PowerShell Scripts
+
+#### 1. `run-attack-demo.ps1` ⭐ **FULL DEMO**
+**Chạy toàn bộ demo tự động**
 ```bash
 .\run-attack-demo.ps1
 ```
+- Mở 2 terminal cho backends
+- Chạy attack simulation
+- Hiển thị kết quả
+
+**Dành cho:** Demo presentation
 
 ---
 
-## 📊 Kết quả mong đợi
-
-### 🔓 Vulnerable System
-```
-🚨 6/6 resources compromised!
-Success Rate: 100%
-
-✓ Admin Resource: DATA STOLEN!
-✓ Department Resource: DATA STOLEN!
-✓ Top Secret Data: DATA STOLEN!
-✓ Secret Data: DATA STOLEN!
-✓ Work Hours Resource: DATA STOLEN!
-✓ Office IP Resource: DATA STOLEN!
-```
-
-### 🔒 Secure System
-```
-✅ 6/6 resources protected!
-Defense Rate: 100%
-
-✓ Admin Resource: PROTECTED! (Role check failed)
-✓ Department Resource: PROTECTED! (Department check failed)
-✓ Top Secret Data: PROTECTED! (Clearance check failed)
-✓ Secret Data: PROTECTED! (Clearance check failed)
-✓ Work Hours Resource: PROTECTED! (Time policy failed)
-✓ Office IP Resource: PROTECTED! (IP policy failed)
-```
-
----
-
-## 🎯 Kịch bản tấn công
-
-### 👤 Attacker Profile
-```
-Username: attacker
-Password: attacker123
-Role: user (không phải admin)
-Department: null (không thuộc phòng ban)
-Clearance: public (thấp nhất)
-```
-
-### 🎯 Mục tiêu
-Đánh cắp 6 loại dữ liệu nhạy cảm từ hệ thống
-
-### 📈 Kết quả
-- **Vulnerable System**: 100% dữ liệu bị lộ
-- **Secure System**: 100% dữ liệu được bảo vệ
-
----
-
-## 📖 Tài liệu hướng dẫn
-
-### Bắt đầu từ đâu?
-
-1. **Muốn demo ngay:** 
-   - Đọc [DEMO_GUIDE.md](./DEMO_GUIDE.md)
-   - Chạy `.\run-attack-demo.ps1`
-
-2. **Muốn hiểu tổng quan:**
-   - Đọc [ATTACK_SUMMARY.md](./ATTACK_SUMMARY.md)
-   - Đọc [COMPARISON.md](./COMPARISON.md)
-
-3. **Muốn phát triển:**
-   - Đọc [attack-simulation/README.md](./attack-simulation/README.md)
-   - Xem source code
-
-4. **Muốn navigation:**
-   - Đọc [INDEX.md](./INDEX.md) ⭐
-
----
-
-## 🎓 Điểm nhấn
-
-### ❌ Vấn đề của Vulnerable System
-- Chỉ kiểm tra Authentication (có token)
-- Không kiểm tra Authorization (quyền hạn)
-- Bất kỳ user nào đăng nhập đều truy cập được mọi thứ
-- **100% dữ liệu bị lộ**
-
-### ✅ Ưu điểm của Secure System
-- **RBAC**: Kiểm tra role (admin, user...)
-- **ABAC**: Kiểm tra attributes (department, clearance, time, IP)
-- **Audit Logging**: Ghi lại mọi lần truy cập
-- **100% dữ liệu được bảo vệ**
-
----
-
-## 🔍 Attack Targets
-
-| Resource | Protection | Vulnerable | Secure |
-|----------|-----------|-----------|---------|
-| Admin Resource | RBAC - Role | ✗ BREACHED | ✓ PROTECTED |
-| Department Resource | ABAC - Department | ✗ BREACHED | ✓ PROTECTED |
-| Top Secret Data | ABAC - Clearance | ✗ BREACHED | ✓ PROTECTED |
-| Secret Data | ABAC - Clearance | ✗ BREACHED | ✓ PROTECTED |
-| Work Hours Resource | ABAC - Time | ✗ BREACHED | ✓ PROTECTED |
-| Office IP Resource | ABAC - IP | ✗ BREACHED | ✓ PROTECTED |
-
----
-
-## 💡 Commands Cheat Sheet
-
+#### 2. `quick-test.ps1` ⭐ **QUICK TEST**
+**Test nhanh với kiểm tra prerequisites**
 ```bash
-# Setup (one-time)
+.\quick-test.ps1
+```
+- Kiểm tra MongoDB
+- Kiểm tra backends
+- Chạy attack simulation
+
+**Dành cho:** Testing và development
+
+---
+
+### Node.js Scripts
+
+#### 1. `attack-simulation/attacker.js`
+**Main attack script với colorful output**
+```bash
+cd attack-simulation
+npm run attack
+```
+
+#### 2. `attack-simulation/generate-report.js`
+**Tạo JSON report**
+```bash
+cd attack-simulation
+npm run report
+```
+
+#### 3. `attack-simulation/seed-attacker.js`
+**Seed attacker user vào database**
+```bash
+cd attack-simulation
+npm run seed
+```
+
+---
+
+## 📁 Cấu trúc Files
+
+```
+project.rbac-abac-security-demo/
+│
+├── 📄 SETUP_GUIDE.md                  🏠 MAIN ENTRY POINT - Start here!
+├── 📄 INDEX.md                   📚 Documentation index
+├── 📄 DEMO_GUIDE.md              ⭐ Hướng dẫn demo chi tiết
+├── 📄 ATTACK_SUMMARY.md          📊 Tổng quan toàn diện
+├── 📄 COMPARISON.md              🔍 So sánh chi tiết
+├── 📄 ATTACK_SIMULATION.md       📝 Quick reference
+│
+├── 🔧 run-attack-demo.ps1        🎬 Full demo script
+├── 🔧 quick-test.ps1             ⚡ Quick test script
+│
+├── attack-simulation/
+│   ├── 📄 SETUP_GUIDE.md              📖 Technical docs
+│   ├── 🔧 attacker.js            🎭 Main attack script
+│   ├── 🔧 generate-report.js     📊 Report generator
+│   ├── 🔧 seed-attacker.js       🌱 Seed script
+│   ├── 📦 package.json           📦 Dependencies
+│   ├── 📝 .env.example           ⚙️ Config example
+│   └── 🚫 .gitignore             🚫 Git ignore
+│
+├── backend_vulnerable/           🔓 Vulnerable backend
+├── backend_secure/               🔒 Secure backend
+└── frontend/                     🎨 React frontend
+```
+
+---
+
+## 🎯 Use Cases
+
+### Case 0: Tôi mới bắt đầu - Chưa biết gì
+1. Đọc [SETUP_GUIDE.md](./SETUP_GUIDE.md) 🏠
+2. Chạy `.\quick-test.ps1`
+3. Xem kết quả và hiểu cơ bản
+
+### Case 1: Tôi muốn demo cho presentation
+1. Đọc [SETUP_GUIDE.md](./SETUP_GUIDE.md) hoặc [DEMO_GUIDE.md](./DEMO_GUIDE.md)
+2. Chạy `.\run-attack-demo.ps1`
+3. Follow the demo flow (12 phút)
+
+### Case 2: Tôi muốn hiểu attack simulation
+1. Đọc [SETUP_GUIDE.md](./SETUP_GUIDE.md)
+2. Đọc [ATTACK_SUMMARY.md](./ATTACK_SUMMARY.md)
+3. Đọc [COMPARISON.md](./COMPARISON.md)
+4. Chạy `.\quick-test.ps1` để test
+
+### Case 3: Tôi muốn phát triển/mở rộng
+1. Đọc [attack-simulation/SETUP_GUIDE.md](./attack-simulation/SETUP_GUIDE.md)
+2. Xem code trong `attack-simulation/`
+3. Modify và test
+
+### Case 4: Tôi cần quick reference
+1. Đọc [ATTACK_SIMULATION.md](./ATTACK_SIMULATION.md)
+2. Chạy `.\quick-test.ps1`
+
+---
+
+## 🎓 Learning Path
+
+### Beginner
+1. ✅ Đọc [SETUP_GUIDE.md](./SETUP_GUIDE.md) 🏠
+2. ✅ Đọc [ATTACK_SIMULATION.md](./ATTACK_SIMULATION.md)
+3. ✅ Chạy `.\quick-test.ps1`
+4. ✅ Xem kết quả
+
+### Intermediate
+1. ✅ Đọc [SETUP_GUIDE.md](./SETUP_GUIDE.md)
+2. ✅ Đọc [DEMO_GUIDE.md](./DEMO_GUIDE.md)
+3. ✅ Đọc [COMPARISON.md](./COMPARISON.md)
+4. ✅ Chạy `.\run-attack-demo.ps1`
+5. ✅ Phân tích audit logs
+
+### Advanced
+1. ✅ Đọc [ATTACK_SUMMARY.md](./ATTACK_SUMMARY.md)
+2. ✅ Đọc [attack-simulation/SETUP_GUIDE.md](./attack-simulation/SETUP_GUIDE.md)
+3. ✅ Xem source code
+4. ✅ Mở rộng attack vectors
+5. ✅ Implement thêm defenses
+
+---
+
+## 🔗 Quick Links
+
+| Tôi muốn... | Đọc file... | Chạy script... |
+|------------|------------|---------------|
+| Bắt đầu | [SETUP_GUIDE.md](./SETUP_GUIDE.md) 🏠 | `.\quick-test.ps1` |
+| Demo nhanh | [DEMO_GUIDE.md](./DEMO_GUIDE.md) | `.\run-attack-demo.ps1` |
+| Test nhanh | [ATTACK_SIMULATION.md](./ATTACK_SIMULATION.md) | `.\quick-test.ps1` |
+| Hiểu tổng quan | [ATTACK_SUMMARY.md](./ATTACK_SUMMARY.md) | - |
+| So sánh chi tiết | [COMPARISON.md](./COMPARISON.md) | - |
+| Phát triển | [attack-simulation/SETUP_GUIDE.md](./attack-simulation/SETUP_GUIDE.md) | `npm run attack` |
+
+---
+
+## 📊 Cheat Sheet
+
+### Setup (One-time)
+```bash
 cd attack-simulation
 npm install
 npm run seed
+```
 
-# Run attack
+### Run Demo
+```bash
+# Option 1: Automated
+.\run-attack-demo.ps1
+
+# Option 2: Quick test
+.\quick-test.ps1
+
+# Option 3: Manual
+cd attack-simulation
 npm run attack
+```
 
-# Generate JSON report
+### Generate Report
+```bash
+cd attack-simulation
 npm run report
+```
 
-# Check audit logs
+### Check Audit Logs
+```bash
 curl http://localhost:5002/api/logs
+```
 
-# Check policy config
+### Check Policy Config
+```bash
 curl http://localhost:5002/api/policy
 ```
 
 ---
 
-## 🎬 Demo Flow (12 phút)
+## 🆘 Troubleshooting
 
-1. **Introduction** (2 min) - Giới thiệu attacker
-2. **Attack Vulnerable** (3 min) - 100% breach
-3. **Attack Secure** (3 min) - 100% protected
-4. **Analysis** (2 min) - So sánh và giải thích
-5. **Conclusion** (2 min) - Best practices
-
----
-
-## 🌟 Features
-
-✅ **Colorful CLI Output** - Dễ nhìn, dễ hiểu  
-✅ **Automated Scripts** - Chạy 1 lệnh, có ngay demo  
-✅ **Comprehensive Docs** - 5 files tài liệu chi tiết  
-✅ **JSON Reports** - Export kết quả để phân tích  
-✅ **Audit Logging** - Theo dõi mọi lần tấn công  
-✅ **Real-world Scenario** - Kịch bản thực tế  
-
----
-
-## 🎉 Bắt đầu ngay!
-
-### Quick Start
+### MongoDB not running
 ```bash
-.\quick-test.ps1
+# Check MongoDB status
+mongosh --eval "db.version()"
+
+# Start MongoDB (if local)
+net start MongoDB
 ```
 
-### Full Demo
+### Backends not running
 ```bash
-.\run-attack-demo.ps1
+# Terminal 1
+cd backend_vulnerable
+npm start
+
+# Terminal 2
+cd backend_secure
+npm start
 ```
 
-### Read Docs
+### Attacker user not found
 ```bash
-# Mở INDEX.md để xem tất cả tài liệu
-start INDEX.md
+cd attack-simulation
+npm run seed
 ```
+
+### Port conflicts
+- Vulnerable: Port 5001
+- Secure: Port 5002
+- Check if ports are free: `netstat -ano | findstr :5001`
 
 ---
 
-## 📞 Need Help?
+## 📞 Support
 
-1. Đọc [INDEX.md](./INDEX.md) - Navigation hub
-2. Đọc [DEMO_GUIDE.md](./DEMO_GUIDE.md) - Chi tiết từng bước
-3. Check Troubleshooting trong docs
+Nếu gặp vấn đề:
+1. Kiểm tra [Troubleshooting](#-troubleshooting)
+2. Đọc lại [DEMO_GUIDE.md](./DEMO_GUIDE.md)
+3. Xem logs trong terminal
+4. Check MongoDB connection
 
 ---
 
-## 🎯 Next Steps
+## 🎉 Credits
 
-Bạn có thể:
-1. ✅ Chạy demo ngay
-2. ✅ Đọc tài liệu để hiểu sâu hơn
-3. ✅ Mở rộng thêm attack vectors
-4. ✅ Implement thêm defenses
-5. ✅ Tạo visualization dashboard
+**Created by:** RBAC/ABAC Security Demo Team  
+**Purpose:** Educational demonstration of security concepts  
+**License:** MIT  
+**Version:** 1.0.0
 
 ---
 
 **Happy Hacking! 🎭🔒**
 
----
-
-*Created by: RBAC/ABAC Security Demo Team*  
-*Version: 1.0.0*  
-*Date: 2025-12-04*
