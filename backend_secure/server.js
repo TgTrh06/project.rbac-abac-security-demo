@@ -6,6 +6,7 @@ import jwt from "jsonwebtoken";
 import bcrypt from "bcryptjs";
 import User from "./models/User.js";
 import resourceRoutes from "./routes/resourceRoutes.js";
+import documentRoutes from "./routes/documentRoutes.js";
 import { getLogs } from "./middlewares/logger.js";
 import { getPolicyConfig, updatePolicyConfig } from "./middlewares/abac.js";
 
@@ -29,6 +30,7 @@ app.post("/api/login", async (req, res) => {
   const token = jwt.sign(
     {
       id: user._id,
+      userId: user._id,  // Add userId for consistency
       username: user.username,
       role: user.role,
       department: user.department,
